@@ -1,0 +1,17 @@
+<div>
+  <app-navbar [modules]="modules"></app-navbar>
+  <div>
+    <app-sidebar [modules]="modules"></app-sidebar>
+    <div>
+      <div id="main-content" class="h-max bg-gray-100 relative overflow-y-auto lg:ml-64" style="height: calc(100vh - 65px);">
+        <main>
+          <div class="w-full bg-gray-100 flex items-center justify-center">
+            <div class="pt-4 px-4 w-full">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

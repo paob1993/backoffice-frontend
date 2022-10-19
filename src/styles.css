@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.circle {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: grey solid 0.5px;
+}

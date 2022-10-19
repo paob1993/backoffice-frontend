@@ -1,0 +1,15 @@
+<div class="lg:p-4">
+  <div class="shadow sm:overflow-hidden sm:rounded-md bg-gray-200">
+    <div class="md:grid md:grid-cols-3 md:gap-4 pl-5 sm:p-6">
+      <div class="md:col-span-1">
+        <div class="px-4 sm:px-0 pt-2 md:pt-0">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Nuevo Vehículo</h3>
+          <p class="mt-1 text-sm text-gray-600">Información necesaria para agregar un nuevo vehículo.</p>
+        </div>
+      </div>
+      <div class="mt-5 md:col-span-2 md:mt-0">
+        <app-vehicle-form (onSave)="save($event)"></app-vehicle-form>
+      </div>
+    </div>
+  </div>  
+</div>
