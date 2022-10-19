@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') && this.authService.isAuthenticated()) {
+      this.router.navigate(['/vehicles']);
+    }
     this.buttonPress = false;
     this.createForm();
   }
@@ -35,16 +38,17 @@ export class LoginComponent implements OnInit {
     this.buttonPress = true;
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
-        next: (v: any) => {
-          if (v.error) {
+        next: (response: any) => {
+          if (response.error) {
             Swal.fire({
               title: 'Error',
-              text: v.error,
+              text: response.error,
               icon: 'error',
               heightAuto: false
             });
           } else {
-            localStorage.setItem('user', JSON.stringify(v));
+            localStorage.setItem('user', JSON.stringify(response));
+            localStorage.setItem('token', JSON.stringify(response?.token));
             this.router.navigate(['/vehicles']);
           }
         },

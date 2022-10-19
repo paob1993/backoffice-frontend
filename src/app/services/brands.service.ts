@@ -8,14 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class BrandsService {
   private url = environment.baseUrl + '/brands';
-  private headers = new HttpHeaders({'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user') || '')?.token})
 
   constructor(
     private http: HttpClient
   ) { }
 
   getBrands() {
-    return this.http.get(this.url, { headers: this.headers })
+    return this.http.get(this.url)
       .pipe(
         map((results) => results),
         catchError(this.handleError)

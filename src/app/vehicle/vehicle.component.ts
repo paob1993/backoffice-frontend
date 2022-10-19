@@ -37,15 +37,15 @@ export class VehicleComponent implements OnInit {
   }
 
   goVehicleDetails(id: string): void {    
-    this.router.navigate(['/details', id]);
+    this.router.navigate(['vehicles/details', id]);
   }
 
   addVehicle(): void {    
-    this.router.navigate(['/add']);
+    this.router.navigate(['vehicles/add']);
   }
 
   editVehicle(id: string): void {    
-    this.router.navigate(['/edit', id]);
+    this.router.navigate(['vehicles/edit', id]);
   }
 
   deleteVehicleConfirm(car: Vehicle) {

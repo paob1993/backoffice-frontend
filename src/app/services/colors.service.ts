@@ -8,14 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ColorsService {
   private url = environment.baseUrl + '/colors';
-  private headers = new HttpHeaders({'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user') || '')?.token});
 
   constructor(
     private http: HttpClient
   ) { }
 
   getColors() {
-    return this.http.get(this.url, { headers: this.headers })
+    return this.http.get(this.url)
       .pipe(
         map((results) => results),
         catchError(this.handleError)

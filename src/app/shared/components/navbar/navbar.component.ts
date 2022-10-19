@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   @Input() modules: any[];
   isOpen: boolean = false;
+  user: any;
 
   constructor(
     private router: Router
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(): void {
-    localStorage.removeItem('user');
+    localStorage.clear();
     this.router.navigate(['/']);
   }
 

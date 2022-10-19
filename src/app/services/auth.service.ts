@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
@@ -8,18 +8,38 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private httpClient: HttpClient;
   private url = environment.baseUrl + '/auth';
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private handler: HttpBackend,
+  ) {
+    this.httpClient = new HttpClient(this.handler);
+  }
 
-  login(loginData: {email: string, password: string}) {
-    return this.http.post(this.url, (loginData))
+  login(loginData: { email: string, password: string }) {
+    return this.httpClient.post(this.url, (loginData))
       .pipe(
         map((results) => results),
         catchError(this.handleError)
       );
+  }
+
+  tokenVerify() {
+    const token = JSON.parse(localStorage.getItem('token') || '');
+    return this.httpClient.get(`${this.url}/token-verify?token=${token}`)
+      .pipe(
+        map((results) => results),
+        catchError(this.handleError)
+      );
+  }
+
+  isAuthenticated() {
+    return this.tokenVerify().subscribe({
+      next: (response: any) => {
+        return response.expired;
+      }
+    });
   }
 
   handleError(error: Response | any) {

@@ -9,14 +9,13 @@ import { Vehicle } from '../models/vehicle';
 })
 export class VehiclesService {
   private url = environment.baseUrl + '/vehicles';
-  private headers = new HttpHeaders({'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user') || '')?.token});
 
   constructor(
     private http: HttpClient
   ) { }
 
   addVehicle(vehicle: Vehicle) {
-    return this.http.post(this.url, (vehicle), { headers: this.headers })
+    return this.http.post(this.url, (vehicle))
         .pipe(
           map((results) => results),
           catchError(this.handleError)
@@ -24,7 +23,7 @@ export class VehiclesService {
   }
 
   getVehicle(id: string) {
-    return this.http.get(`${this.url}/${id}`, { headers: this.headers })
+    return this.http.get(`${this.url}/${id}`)
       .pipe(
         map((results) => results),
         catchError(this.handleError)
@@ -32,7 +31,7 @@ export class VehiclesService {
   }
 
   editVehicle(id: string, vehicle: Vehicle) {
-    return this.http.patch(`${this.url}/${id}`, (vehicle), { headers: this.headers })
+    return this.http.patch(`${this.url}/${id}`, (vehicle))
       .pipe(
         map((results) => results),
         catchError(this.handleError)
@@ -40,7 +39,7 @@ export class VehiclesService {
   }
 
   deleteVehicle(id: string) {
-    return this.http.delete(`${this.url}/${id}`, { headers: this.headers })
+    return this.http.delete(`${this.url}/${id}`)
       .pipe(
         map((results) => results),
         catchError(this.handleError)
@@ -48,7 +47,7 @@ export class VehiclesService {
   }
 
   getVehicles() {
-    return this.http.get(this.url, { headers: this.headers })
+    return this.http.get(this.url)
       .pipe(
         map((results) => results),
         catchError(this.handleError)

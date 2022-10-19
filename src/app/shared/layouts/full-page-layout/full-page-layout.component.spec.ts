@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FullPageComponent } from './full-page-layout.component';
+import { FullPageLayoutComponent } from './full-page-layout.component';
 
 describe('FullPageComponent', () => {
-  let component: FullPageComponent;
-  let fixture: ComponentFixture<FullPageComponent>;
+  let component: FullPageLayoutComponent;
+  let fixture: ComponentFixture<FullPageLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FullPageComponent ]
+      declarations: [ FullPageLayoutComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FullPageComponent);
+    fixture = TestBed.createComponent(FullPageLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

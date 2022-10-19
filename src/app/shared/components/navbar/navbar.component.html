@@ -11,8 +11,8 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch lg:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          <img class="block h-12 w-auto lg:hidden" src="assets/images/back_office.png" alt="PaoB1993">
+          <img class="hidden h-12 w-auto lg:block" src="assets/images/back_office.png" alt="PaoB1993">
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2">
@@ -31,6 +31,7 @@
 
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="lg:hidden" id="mobile-menu" *ngIf="isOpen">
+    
     <div class="space-y-1 px-2 pt-2 pb-3" *ngFor="let module of modules">
       <a [routerLink]="module.path" class="text-gray-500 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
         {{ module.name }}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../auth-guard.guard';
 import { DashboardLayoutComponent } from '../shared/layouts/dashboard-layout/dashboard-layout.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
@@ -21,7 +22,8 @@ const routes: Routes = [{
   }, {
     path: 'details/:id',
     component: VehicleDetailsComponent
-  }]
+  }],
+  canActivate: [AuthGuard]
 }];
 
 @NgModule({
