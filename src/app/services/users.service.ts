@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -9,14 +9,17 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
+  private httpClient: HttpClient;
   private url = environment.baseUrl + '/users';
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private handler: HttpBackend,
+  ) {
+    this.httpClient = new HttpClient(this.handler);
+  }
 
   addUser(user: User) {
-    return this.http.post(this.url, (user))
+    return this.httpClient.post(this.url, (user))
       .pipe(
         map((results) => results),
         catchError(this.handleError)

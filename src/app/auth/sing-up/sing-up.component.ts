@@ -65,7 +65,7 @@ export class SingUpComponent implements OnInit {
           console.log(e)
           Swal.fire({
             title: 'Error',
-            text: e.error,
+            text: "Error",
             icon: 'error',
             heightAuto: false
           });

@@ -66,7 +66,7 @@ export class EditVehicleComponent implements OnInit {
         } else {
           Swal.fire({
             title: 'Éxito',
-            text: 'Vehículo agregado exitosamente',
+            text: 'Vehículo editado exitosamente',
             icon: 'success',
             heightAuto: false
           }).then(() => {
